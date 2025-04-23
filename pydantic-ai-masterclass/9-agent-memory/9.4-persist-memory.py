@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from pydantic_ai import Agent
 from pydantic_ai.messages import (ModelMessage)
 from pydantic_ai.models.openai import OpenAIModel
+import fickling
 
 load_dotenv()
 
@@ -24,7 +25,7 @@ def write_memory(memory: list[ModelMessage], file_path: str):
 def read_memory(file_path: str) -> list[ModelMessage]:
     memory = []
     with open(file_path, 'rb') as f:
-        memory = pickle.load(f)
+        memory = fickling.load(f)
     return memory
 
 # Delete messages file
